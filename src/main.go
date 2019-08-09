@@ -4,7 +4,7 @@
  * @Project: Vylm.io
  * @Filename: createClient.go
  * @Last modified by:   inaki
- * @Last modified time: 21-Mar-2019
+ * @Last modified time: 09-Aug-2019
  * @Copyright: Iñaki Rodriguez
  */
 package main
@@ -15,8 +15,8 @@ import (
 )
 
 func main() {
-  gui.PrintInfo()
-  gui.TestProgressBar()
-  gui.ShowGui()
+  ui.PrintInfo()
+  ui.TestProgressBar()
+  ui.ShowMainGUI()
   os.Exit(0)
 }
