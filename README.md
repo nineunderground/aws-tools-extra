@@ -18,5 +18,5 @@ Different utils to make simple tasks easily:
 ##### Run the create client
 *go run main.go*
 
-##### Create binary
+##### Create binary (within /src)
 *go build*

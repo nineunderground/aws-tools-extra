@@ -11,15 +11,13 @@ package ui
 
 import (
   "fmt"
-  "github.com/schollz/progressbar"
-  "time"
-  "fyne.io/fyne/widget"
-	"fyne.io/fyne/app"
+  "fyne.io/fyne/app"
   "../res"
-  "fyne.io/fyne/dialog"
+  "../content"
 )
 
 var mainApp = app.New()
+var mainWindow = mainApp.NewWindow("AWS Tools by 9Underground!")
 //var mainDesc = "Please select one choice"
 // var FYNE_THEME=light
 
@@ -31,58 +29,18 @@ func PrintInfo() {
   fmt.Println("************************************************")
 }
 
-func TestProgressBar() {
-  bar := progressbar.New(100)
-  for i := 0; i < 100; i++ {
-      bar.Add(1)
-      time.Sleep(5 * time.Millisecond)
-  }
-  fmt.Println("")
-}
-
 // GUI
 // More info at: https://github.com/fyne-io/fyne
 // https://github.com/fyne-io/examples/
 func ShowMainGUI() {
   fmt.Println("Showing GUI")
-
-  // Main application obj
-  //mainApp = app.New()
   mainApp.SetIcon(icon.GetLogo())
 
-  // New window
-	mainWindow := mainApp.NewWindow("AWS Tools by 9Underground!")
+  // LAYOUTS:
+  mainLayout := content.CreateMainLayout(mainApp, mainWindow)
 
-  // Set window content
-  // LABELS
-  selectLbl := "**********************\nPlease, select your action:\n**********************"
-  labelDesc := widget.NewLabel(selectLbl)
-
-  quitBtn := widget.NewButton("Quit", func() {
-    //QuitApp(mainWindow)
-    quitDialog := dialog.NewConfirm("Exit","Do you quit?", exit, mainWindow)
-    quitDialog.Show()
-  })
-
-  // Set form content
-  form := &widget.Form{}
-  //form.Append("formItemA", widget.NewLabel("formLabelA"))
-  entry := widget.NewEntry()
-  form.Append("S3Bucket", entry)
-
-  sepADesc := widget.NewLabel("_______________")
-  sepBDesc := widget.NewLabel("_______________")
-  quitLayout := widget.NewHBox(sepADesc, quitBtn, sepBDesc)
-
-  // Set main content
-  mainLayout := widget.NewVBox(labelDesc, form, quitLayout)
+  // Set MAIN LAYOUT
   mainWindow.SetContent(mainLayout)
   mainWindow.CenterOnScreen()
 	mainWindow.ShowAndRun()
-}
-
-func exit(isQuit bool){
-  if isQuit {
-    mainApp.Quit()
-  }
 }

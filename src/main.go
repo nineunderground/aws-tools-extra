@@ -11,12 +11,24 @@ package main
 
 import (
   //"os"
+  "github.com/schollz/progressbar"
+  "fmt"
+  "time"
   "./utils"
 )
 
 func main() {
   ui.PrintInfo()
-  ui.TestProgressBar()
+  testProgressBar()
   ui.ShowMainGUI()
   //os.Exit(0)
+}
+
+func testProgressBar() {
+  bar := progressbar.New(100)
+  for i := 0; i < 100; i++ {
+      bar.Add(1)
+      time.Sleep(5 * time.Millisecond)
+  }
+  fmt.Println("")
 }
