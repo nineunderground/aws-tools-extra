@@ -3,6 +3,7 @@ Different utils to make simple tasks easily:
 - S3 UPLOADER
 - INSTANCE SCHEDULER PANEL
 - INSTANCE WEEK REPORT
+- SSL CERTIFICATE VALIDITY
 
 ### INSTRUCTIONS
 
@@ -14,6 +15,7 @@ Different utils to make simple tasks easily:
 - *go get -v -u github.com/schollz/progressbar*
 - *go get -v -u github.com/gen2brain/raylib-go/raylib*
 - *go get fyne.io/fyne*
+- *go get -u github.com/aws/aws-sdk-go/...*
 
 ##### Run the create client
 *go run main.go*
